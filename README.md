@@ -1,7 +1,7 @@
 
 # 🧠 Reaction Time Tester
 
-A simple web-based reaction time tester built with JavaScript, HTML, and CSS. Challenge yourself to see how fast you can react when the box turns green!
+A simple web-based reaction time tester built with JavaScript and HTML. Challenge yourself to see how fast you can react when the box turns green!
 
 ## 🚀 How It Works
 
