@@ -67,3 +67,24 @@ function myFunction() {
 
     }, Math.floor(Math.random() * 3000) + 2000);
 }
+
+
+function darkMode() {
+    // Change body background and text color
+    document.body.style.backgroundColor = "#181818";
+    document.body.style.color = "#fff";
+
+    // Change all text elements to white
+    const allText = document.querySelectorAll("h1, h2, h3, h4, h5, h6, p, span, div, label, button");
+    allText.forEach(el => {
+        el.style.color = "#fff";
+    });
+
+    // Change reaction box background if present
+    const reactionBox = document.getElementById('reaction-box');
+    if (reactionBox) {
+        reactionBox.style.backgroundColor = "#222";
+    }
+
+    
+}
