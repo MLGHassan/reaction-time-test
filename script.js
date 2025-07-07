@@ -1,4 +1,4 @@
-
+let isDark = false;
 
 function myFunction() {
 
@@ -24,7 +24,11 @@ function myFunction() {
         reactButton.textContent = "Click Me!";
         reactButton.style.fontFamily = 'monospace';
         reactButton.style.fontSize = '1.5em';
-        reactButton.style.color = 'black';
+        if (isDark) {
+            reactButton.style.color = 'white';
+        } else {
+            reactButton.style.color = 'black';
+        }
         reactButton.style.border = 'none';
         reactButton.id = 'react-button';
         reactButton.style.width = '100%';
@@ -35,15 +39,15 @@ function myFunction() {
         reaction_text.style.height = '0';
 
         reactButton.style.cursor = 'pointer';
-        reaction_box.style.transition = 'background-color 0.3s ease';
+        reaction_box.style.transition = 'none';
 
 
-        let startTime = new Date().getTime();
+        let startTime = performance.now()
         reactButton.onclick = function() {
             reaction_box.style.backgroundColor = 'skyblue';
 
-            const endTime = new Date().getTime();
-            const reactionTime = endTime - startTime;
+            const endTime = performance.now();
+            const reactionTime = Math.floor(endTime - startTime);
             reaction_text.style.height = '70%';
             reaction_text.innerHTML = `Your reaction time: ${reactionTime} ms`;
             reactButton.remove();
@@ -52,7 +56,11 @@ function myFunction() {
             retryButton.id = 'retry-button';
             retryButton.style.fontFamily = 'monospace';
             retryButton.style.fontSize = '1.5em';
-            retryButton.style.color = 'black';
+            if (isDark) {
+                retryButton.style.color = 'white';
+            } else {
+                retryButton.style.color = 'black';
+            }
             retryButton.style.border = 'none';
             retryButton.style.width = '100%';
             retryButton.style.height = '30%';
@@ -70,21 +78,23 @@ function myFunction() {
 
 
 function darkMode() {
+    const allElements = document.querySelectorAll('*');
+    const darkToggleButton = document.getElementById('dark-mode-toggle');
     // Change body background and text color
-    document.body.style.backgroundColor = "#181818";
-    document.body.style.color = "#fff";
-
-    // Change all text elements to white
-    const allText = document.querySelectorAll("h1, h2, h3, h4, h5, h6, p, span, div, label, button");
-    allText.forEach(el => {
-        el.style.color = "#fff";
-    });
-
-    // Change reaction box background if present
-    const reactionBox = document.getElementById('reaction-box');
-    if (reactionBox) {
-        reactionBox.style.backgroundColor = "#222";
+    if (isDark) {
+        document.body.style.backgroundColor = "#fff";
+        document.body.style.color = "#000";
+        allElements.forEach(el => {
+            el.style.color = "#000";
+        });
+        
+    } else {
+        document.body.style.backgroundColor = "#181818";
+        document.body.style.color = "#fff";
+        allElements.forEach(el => {
+            el.style.color = "#fff";
+        });
     }
-
+    isDark = !isDark;
     
 }
